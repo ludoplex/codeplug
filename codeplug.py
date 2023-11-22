@@ -120,7 +120,7 @@ def _decode_cmd(args):
 
     xml = etree.fromstring(result)
 
-    with open(args.output or args.file + '.xml', 'wb') as f:
+    with open(args.output or f'{args.file}.xml', 'wb') as f:
         f.write(etree.tostring(xml, pretty_print=True))
 
 
@@ -138,7 +138,7 @@ def _build_cmd(args):
 
     result = build(payload, signing_key, base64.b64decode(config['key']), base64.b64decode(config['iv']), backend)
 
-    with open(args.output or args.file + '.ctb', 'wb') as f:
+    with open(args.output or f'{args.file}.ctb', 'wb') as f:
         f.write(result)
 
 
